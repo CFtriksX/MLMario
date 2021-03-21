@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 imgRows , imgCols = 84, 84
-numberOfActions = 12
+numberOfActions = 5
 
 def createModel():
     model = tf.keras.models.Sequential([

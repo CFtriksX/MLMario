@@ -1,14 +1,14 @@
 import gym_super_mario_bros
 import numpy as np
 from nes_py.wrappers import JoypadSpace
-from gym_super_mario_bros.actions import COMPLEX_MOVEMENT
+from gym_super_mario_bros.actions import RIGHT_ONLY
 from Model import createModel
 from wrappers import wrapper
 from random import randint
 import imageio
 
-env = gym_super_mario_bros.make('SuperMarioBros-1-2-v2')
-env = JoypadSpace(env, COMPLEX_MOVEMENT)
+env = gym_super_mario_bros.make('SuperMarioBros-1-1-v0')
+env = JoypadSpace(env, RIGHT_ONLY)
 env = wrapper(env)
 
 modelFilePath = './TrainedModel.HDF5'
@@ -37,7 +37,7 @@ for i in range(10000):
 
     if i % 100 == 0:
         print("Medium reward per episode is :", totalReward / 100)
-        video_filename = './video/Complex/Epoch' + str(i) + '.mp4'
+        video_filename = './video/Right/Epoch' + str(i) + '.mp4'
         with imageio.get_writer(video_filename, fps=60) as video:
             for _ in range(2):
                 lastState = env.reset()
